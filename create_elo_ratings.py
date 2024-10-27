@@ -1,4 +1,5 @@
 import json
+import random
 
 # Paths to the input and output files
 compiled_battles_file_path = "./Data/Output/prepared_files/compiled_battles.json"
@@ -6,13 +7,13 @@ output_elo_file_path = "./Data/Output/prepared_files/elo_rankings.json"
 
 # Parameters for ELO calculation
 INITIAL_ELO = 1000
-K_FACTOR = 16  # Adjust as needed based on the number of matches
+K_FACTOR = 10  # Starting with a standard K-factor
 
 def calculate_expected(player_rating, opponent_rating):
     """Calculate the expected score between two players."""
     return 1 / (1 + 10 ** ((opponent_rating - player_rating) / 400))
 
-def update_elo(player_rating, opponent_rating, score, K=K_FACTOR):
+def update_elo(player_rating, opponent_rating, score, K):
     expected_score = calculate_expected(player_rating, opponent_rating)
     new_rating = player_rating + K * (score - expected_score)
     return new_rating
@@ -55,26 +56,26 @@ def compute_elo_for_battle_type(battle_type_data):
                 'score': score
             })
 
-    # Sort matches randomly or in any desired order
-    # For consistency, you might want to shuffle the matches:
-    # import random
-    # random.shuffle(matches)
+    # Shuffle matches to randomize order
+    random.shuffle(matches)
 
     # Update ELO ratings based on individual matches
-    for match in matches:
-        m1 = match['model_1']
-        m2 = match['model_2']
-        score = match['score']
+    epochs = 20  # Number of times to iterate over all matches
+    for _ in range(epochs):
+        for match in matches:
+            m1 = match['model_1']
+            m2 = match['model_2']
+            score = match['score']
 
-        elo1 = elo_ratings[m1]
-        elo2 = elo_ratings[m2]
+            elo1 = elo_ratings[m1]
+            elo2 = elo_ratings[m2]
 
-        # Update ratings
-        new_elo1 = update_elo(elo1, elo2, score)
-        new_elo2 = update_elo(elo2, elo1, 1 - score)
+            # Update ratings (you might use a dynamic K-factor here)
+            new_elo1 = update_elo(elo1, elo2, score, K=K_FACTOR)
+            new_elo2 = update_elo(elo2, elo1, 1 - score, K=K_FACTOR)
 
-        elo_ratings[m1] = new_elo1
-        elo_ratings[m2] = new_elo2
+            elo_ratings[m1] = new_elo1
+            elo_ratings[m2] = new_elo2
 
     return elo_ratings
 
