@@ -21,18 +21,18 @@ def get_llm_service_function(model_name: str):
         raise ImportError(f"LLM service function for model '{model_name}' not found") from e
 
 async def get_judgments(
-    judgements_file_path: str,
+    judgments_file_path: str,
     judgment_model: str,
     version_name: str
 ):
     # Verify that the file exists
-    if not os.path.exists(judgements_file_path):
-        raise FileNotFoundError(f"The file {judgements_file_path} does not exist.")
+    if not os.path.exists(judgments_file_path):
+        raise FileNotFoundError(f"The file {judgments_file_path} does not exist.")
 
     # Read JSONL file
     try:
-        with open(judgements_file_path, 'r') as f:
-            if os.stat(judgements_file_path).st_size == 0:
+        with open(judgments_file_path, 'r') as f:
+            if os.stat(judgments_file_path).st_size == 0:
                 raise ValueError("The input file is empty.")
             df = pd.read_json(f, lines=True)
     except ValueError as e:
@@ -46,7 +46,7 @@ async def get_judgments(
     # Get the function for the judgment model
     llm_service_function = get_llm_service_function(judgment_model)
 
-    output_file = f"./Data/Output/consistency_judgements/{version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
+    output_file = f"./Data/Output/consistency_judgments/{version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
     # check if the file exists
     if os.path.exists(output_file):
         logging.info(f"File {output_file} already exists. Skipping.")
@@ -82,21 +82,24 @@ async def get_judgments(
     else:
         logging.warning("No data to save.")
 
-async def main():
-    await get_judgments(
-        judgements_file_path="./Data/Output/consistency_judgements/v0_big_c_test_aya_8b_vs_gpt_4o.jsonl",
-        judgment_model="gpt_4o",
-        version_name="3v"
-    )
+# async def main():
+#     await get_judgments(
+#         judgments_file_path="./Data/Output/consistency_judgments/v0_big_c_test_aya_8b_vs_gpt_4o.jsonl",
+#         judgment_model="gpt_4o",
+#         version_name="3v"
+#     )
 
 # add judgments for all judgment files
-# async def main():
-#     files = os.listdir("./Data/Output/judgements/")
-#     for file in files:
-#         await get_judgments(
-#             judgements_file_path=f"./Data/Output/judgements/{file}",
-#             judgment_model="gpt_4o"
-#         )
+async def main():
+    files = os.listdir("./Data/Output/consistency_judgments/")
+    for file in files:
+        if "v1" not in file:
+            print(file)
+            await get_judgments(
+                judgments_file_path=f"./Data/Output/consistency_judgments/{file}",
+                judgment_model="gpt_4o",
+                version_name="v1"
+            )
 
 if __name__ == "__main__":
     asyncio.run(main())

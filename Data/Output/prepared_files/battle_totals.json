@@ -616,86 +616,86 @@
   },
   "consistency_battles": {
     "gpt_4o": {
-      "total_wins": 547,
-      "total_losses": 443,
-      "total_ties": 12,
+      "total_wins": 1073,
+      "total_losses": 1402,
+      "total_ties": 19,
       "wins_against": {
-        "google_translate": 0,
-        "gemini_1_5_pro": 0,
+        "google_translate": 115,
+        "gemini_1_5_pro": 278,
         "llama_3_1_400b": 0,
         "sonnet_3_point_5": 127,
-        "o1_preview": 0,
+        "o1_preview": 133,
         "aya_8b": 420
       },
       "losses_against": {
-        "google_translate": 0,
-        "gemini_1_5_pro": 0,
+        "google_translate": 386,
+        "gemini_1_5_pro": 209,
         "llama_3_1_400b": 0,
         "sonnet_3_point_5": 365,
-        "o1_preview": 0,
+        "o1_preview": 364,
         "aya_8b": 78
       },
       "ties_against": {
         "google_translate": 0,
-        "gemini_1_5_pro": 0,
+        "gemini_1_5_pro": 3,
         "llama_3_1_400b": 0,
         "sonnet_3_point_5": 9,
-        "o1_preview": 0,
+        "o1_preview": 4,
         "aya_8b": 3
       }
     },
     "sonnet_3_point_5": {
-      "total_wins": 848,
-      "total_losses": 145,
-      "total_ties": 9,
+      "total_wins": 1864,
+      "total_losses": 617,
+      "total_ties": 13,
       "wins_against": {
-        "gemini_1_5_pro": 0,
-        "google_translate": 0,
+        "gemini_1_5_pro": 455,
+        "google_translate": 152,
         "aya_8b": 483,
         "gpt_4o": 365,
         "llama_3_1_400b": 0,
-        "o1_preview": 0
+        "o1_preview": 409
       },
       "losses_against": {
-        "gemini_1_5_pro": 0,
-        "google_translate": 0,
+        "gemini_1_5_pro": 35,
+        "google_translate": 348,
         "aya_8b": 18,
         "gpt_4o": 127,
         "llama_3_1_400b": 0,
-        "o1_preview": 0
+        "o1_preview": 89
       },
       "ties_against": {
         "gemini_1_5_pro": 0,
-        "google_translate": 0,
+        "google_translate": 1,
         "aya_8b": 0,
         "gpt_4o": 9,
         "llama_3_1_400b": 0,
-        "o1_preview": 0
+        "o1_preview": 3
       }
     },
     "google_translate": {
-      "total_wins": 0,
-      "total_losses": 0,
-      "total_ties": 0,
+      "total_wins": 2021,
+      "total_losses": 472,
+      "total_ties": 1,
       "wins_against": {
-        "gpt_4o": 0,
-        "sonnet_3_point_5": 0,
-        "o1_preview": 0,
+        "gpt_4o": 386,
+        "sonnet_3_point_5": 348,
+        "o1_preview": 352,
         "llama_3_1_400b": 0,
-        "gemini_1_5_pro": 0,
-        "aya_8b": 0
+        "gemini_1_5_pro": 440,
+        "aya_8b": 495
       },
       "losses_against": {
-        "gpt_4o": 0,
-        "sonnet_3_point_5": 0,
-        "o1_preview": 0,
+        "gpt_4o": 115,
+        "sonnet_3_point_5": 152,
+        "o1_preview": 149,
         "llama_3_1_400b": 0,
-        "gemini_1_5_pro": 0,
-        "aya_8b": 0
+        "gemini_1_5_pro": 50,
+        "aya_8b": 6
       },
       "ties_against": {
         "gpt_4o": 0,
-        "sonnet_3_point_5": 0,
+        "sonnet_3_point_5": 1,
         "o1_preview": 0,
         "llama_3_1_400b": 0,
         "gemini_1_5_pro": 0,
@@ -703,57 +703,57 @@
       }
     },
     "o1_preview": {
-      "total_wins": 0,
-      "total_losses": 0,
-      "total_ties": 0,
+      "total_wins": 1401,
+      "total_losses": 1085,
+      "total_ties": 8,
       "wins_against": {
         "llama_3_1_400b": 0,
-        "gemini_1_5_pro": 0,
-        "aya_8b": 0,
-        "google_translate": 0,
-        "gpt_4o": 0,
-        "sonnet_3_point_5": 0
+        "gemini_1_5_pro": 322,
+        "aya_8b": 477,
+        "google_translate": 149,
+        "gpt_4o": 364,
+        "sonnet_3_point_5": 89
       },
       "losses_against": {
         "llama_3_1_400b": 0,
-        "gemini_1_5_pro": 0,
-        "aya_8b": 0,
-        "google_translate": 0,
-        "gpt_4o": 0,
-        "sonnet_3_point_5": 0
+        "gemini_1_5_pro": 167,
+        "aya_8b": 24,
+        "google_translate": 352,
+        "gpt_4o": 133,
+        "sonnet_3_point_5": 409
       },
       "ties_against": {
         "llama_3_1_400b": 0,
-        "gemini_1_5_pro": 0,
+        "gemini_1_5_pro": 1,
         "aya_8b": 0,
         "google_translate": 0,
-        "gpt_4o": 0,
-        "sonnet_3_point_5": 0
+        "gpt_4o": 4,
+        "sonnet_3_point_5": 3
       }
     },
     "gemini_1_5_pro": {
-      "total_wins": 0,
-      "total_losses": 0,
-      "total_ties": 0,
+      "total_wins": 879,
+      "total_losses": 1567,
+      "total_ties": 4,
       "wins_against": {
-        "gpt_4o": 0,
-        "o1_preview": 0,
-        "sonnet_3_point_5": 0,
+        "gpt_4o": 209,
+        "o1_preview": 167,
+        "sonnet_3_point_5": 35,
         "llama_3_1_400b": 0,
-        "google_translate": 0,
-        "aya_8b": 0
+        "google_translate": 50,
+        "aya_8b": 418
       },
       "losses_against": {
-        "gpt_4o": 0,
-        "o1_preview": 0,
-        "sonnet_3_point_5": 0,
+        "gpt_4o": 278,
+        "o1_preview": 322,
+        "sonnet_3_point_5": 455,
         "llama_3_1_400b": 0,
-        "google_translate": 0,
-        "aya_8b": 0
+        "google_translate": 440,
+        "aya_8b": 72
       },
       "ties_against": {
-        "gpt_4o": 0,
-        "o1_preview": 0,
+        "gpt_4o": 3,
+        "o1_preview": 1,
         "sonnet_3_point_5": 0,
         "llama_3_1_400b": 0,
         "google_translate": 0,
@@ -761,24 +761,24 @@
       }
     },
     "aya_8b": {
-      "total_wins": 96,
-      "total_losses": 903,
+      "total_wins": 198,
+      "total_losses": 2293,
       "total_ties": 3,
       "wins_against": {
         "sonnet_3_point_5": 18,
-        "o1_preview": 0,
+        "o1_preview": 24,
         "gpt_4o": 78,
-        "google_translate": 0,
+        "google_translate": 6,
         "llama_3_1_400b": 0,
-        "gemini_1_5_pro": 0
+        "gemini_1_5_pro": 72
       },
       "losses_against": {
         "sonnet_3_point_5": 483,
-        "o1_preview": 0,
+        "o1_preview": 477,
         "gpt_4o": 420,
-        "google_translate": 0,
+        "google_translate": 495,
         "llama_3_1_400b": 0,
-        "gemini_1_5_pro": 0
+        "gemini_1_5_pro": 418
       },
       "ties_against": {
         "sonnet_3_point_5": 0,

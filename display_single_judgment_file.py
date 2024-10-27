@@ -4,7 +4,7 @@ from tkinter import ttk
 
 def main():
     # Load data from the JSONL file
-    data_file = './Data/Output/judgements/v2_big_c_test_gpt_4o_vs_sonnet_3_point_5.jsonl'
+    data_file = './Data/Output/judgments/v2_big_c_test_gpt_4o_vs_sonnet_3_point_5.jsonl'
     df = pd.read_json(data_file, lines=True)
 
     # Identify judgment column

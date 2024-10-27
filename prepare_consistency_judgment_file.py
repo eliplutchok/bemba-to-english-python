@@ -85,7 +85,7 @@ async def prepare_consistency_judgment_file(
     )
     
     # Define the output file path
-    output_file = f"./Data/Output/consistency_judgements/{version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
+    output_file = f"./Data/Output/consistency_judgments/{version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
     
     # Check if the file already exists
     if os.path.exists(output_file):
@@ -95,12 +95,35 @@ async def prepare_consistency_judgment_file(
         result_df.to_json(output_file, orient='records', lines=True)
         print(f"File '{output_file}' has been created.")
 
+all_models = [
+    "gemini_1_5_pro", 
+    "o1_preview", 
+    "google_translate",
+    "aya_8b",
+    "gpt_4o",
+    "sonnet_3_point_5"
+]
+
+model_pairs = [
+    ("gemini_1_5_pro", "o1_preview"),
+    ("gemini_1_5_pro", "google_translate"), 
+    ("gemini_1_5_pro", "aya_8b"),
+    ("gemini_1_5_pro", "gpt_4o"),
+    ("gemini_1_5_pro", "sonnet_3_point_5"),
+    ("o1_preview", "google_translate"),
+    ("o1_preview", "aya_8b"),
+    ("o1_preview", "gpt_4o"), 
+    ("o1_preview", "sonnet_3_point_5"),
+    ("google_translate", "aya_8b"),
+    ("google_translate", "gpt_4o"),
+    ("google_translate", "sonnet_3_point_5"),
+]
 async def main():
-    await prepare_consistency_judgment_file(
-        v1_model="aya_8b",
-        v2_model="gpt_4o",
-        version_name="vtest"
-    )
+    for v1_model, v2_model in model_pairs:
+        await prepare_consistency_judgment_file(
+            v1_model=v1_model,
+            v2_model=v2_model,
+        )
 
 if __name__ == "__main__":
     asyncio.run(main())

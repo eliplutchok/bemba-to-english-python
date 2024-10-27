@@ -21,18 +21,18 @@ def get_llm_service_function(model_name: str):
         raise ImportError(f"LLM service function for model '{model_name}' not found") from e
 
 async def add_judgments(
-    judgements_file_path: str,
-    judgement_model: str,
+    judgments_file_path: str,
+    judgment_model: str,
     version_name: str
 ):
     # Verify that the file exists
-    if not os.path.exists(judgements_file_path):
-        raise FileNotFoundError(f"The file {judgements_file_path} does not exist.")
+    if not os.path.exists(judgments_file_path):
+        raise FileNotFoundError(f"The file {judgments_file_path} does not exist.")
 
     # Read JSONL file
     try:
-        with open(judgements_file_path, 'r') as f:
-            if os.stat(judgements_file_path).st_size == 0:
+        with open(judgments_file_path, 'r') as f:
+            if os.stat(judgments_file_path).st_size == 0:
                 raise ValueError("The input file is empty.")
             df = pd.read_json(f, lines=True)
     except ValueError as e:
@@ -44,9 +44,9 @@ async def add_judgments(
     logging.info(f"Models: v1_model = {v1_model}, v2_model = {v2_model}")
 
     # Get the function for the judgment model
-    llm_service_function = get_llm_service_function(judgement_model)
+    llm_service_function = get_llm_service_function(judgment_model)
 
-    output_file = f"./Data/Output/judgements/{version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
+    output_file = f"./Data/Output/judgments/{version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
     # check if the file exists
     if os.path.exists(output_file):
         logging.info(f"File {output_file} already exists. Skipping.")
@@ -69,10 +69,10 @@ async def add_judgments(
                     winner = 'tie'
                 else:
                     winner = 'unknown'
-                df.at[index, f'{judgement_model}_judgment'] = winner
+                df.at[index, f'{judgment_model}_judgment'] = winner
             except ValueError as e:
                 logging.error(f"Error converting response to int for row {index}: {e}")
-                df.at[index, f'{judgement_model}_judgment'] = response
+                df.at[index, f'{judgment_model}_judgment'] = response
         except Exception as e:
             logging.error(f"Error processing row {index}: {e}")
 
@@ -84,18 +84,18 @@ async def add_judgments(
 
 async def main():
     await add_judgments(
-        judgements_file_path="./Data/Output/judgements/v0_big_c_test_google_translate_vs_sonnet_3_point_5.jsonl",
-        judgement_model="gpt_4o",
+        judgments_file_path="./Data/Output/judgments/v0_big_c_test_google_translate_vs_sonnet_3_point_5.jsonl",
+        judgment_model="gpt_4o",
         version_name="v1"
     )
 
 # add judgments for all judgment files
 # async def main():
-#     files = os.listdir("./Data/Output/judgements/")
+#     files = os.listdir("./Data/Output/judgments/")
 #     for file in files:
 #         await get_judgments(
-#             judgements_file_path=f"./Data/Output/judgements/{file}",
-#             judgement_model="gpt_4o"
+#             judgments_file_path=f"./Data/Output/judgments/{file}",
+#             judgment_model="gpt_4o"
 #         )
 
 if __name__ == "__main__":

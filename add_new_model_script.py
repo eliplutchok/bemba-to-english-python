@@ -51,8 +51,8 @@ async def main():
     print(output_files)
     for file in output_files:
         await add_judgments(
-            judgements_file_path=file,
-            judgement_model='gpt_4o',
+            judgments_file_path=file,
+            judgment_model='gpt_4o',
             version_name='v3'
         )
 

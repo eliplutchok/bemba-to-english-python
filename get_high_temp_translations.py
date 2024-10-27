@@ -11,6 +11,7 @@ from llm_services.get_aya_8b_response import get_aya_8b_response
 from llm_services.get_aya_32b_response import get_aya_32b_response
 from llm_services.get_llama_3_1_400b_response import get_llama_3_1_400b_response
 from llm_services.get_google_translate_response import get_google_translate_response
+from llm_services.get_gemini_response import get_gemini_response
 
 def load_data(input_directory: Path, input_file_name: str) -> pd.DataFrame:
     df = pd.read_json(input_directory / input_file_name, lines=True)
@@ -94,8 +95,8 @@ def get_high_temp_translations(t_number: int=None) -> None:
     input_file_name = 'big_c_conversations_test.jsonl'
 
     services = [
-        (get_o1_preview_response, 1),
-        (get_o1_preview_response, 2),
+        (get_gemini_response, 1),
+        (get_gemini_response, 2),
     ]
     for service, t_number in services:
         df = load_data(input_directory, input_file_name)
@@ -106,7 +107,7 @@ def get_high_temp_translations(t_number: int=None) -> None:
             service, 
             output_directory,
             t_number=t_number,
-            # temperature=0.8
+            temperature=1.7
         ))
 
 if __name__ == "__main__":

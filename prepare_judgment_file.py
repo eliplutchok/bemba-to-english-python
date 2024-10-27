@@ -80,9 +80,9 @@ def prepare_judgment_file(
 
     # Define the output file path
     if output_version_name is None:
-        output_file = f"./Data/Output/judgements/big_c_test_{v1_model}_vs_{v2_model}.jsonl"
+        output_file = f"./Data/Output/judgments/big_c_test_{v1_model}_vs_{v2_model}.jsonl"
     else:
-        output_file = f"./Data/Output/judgements/{output_version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
+        output_file = f"./Data/Output/judgments/{output_version_name}_big_c_test_{v1_model}_vs_{v2_model}.jsonl"
 
     # Check if the file already exists
     if os.path.exists(output_file):

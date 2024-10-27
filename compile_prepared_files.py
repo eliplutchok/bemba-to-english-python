@@ -3,8 +3,8 @@ import json
 import pandas as pd
 
 translations_folder = "./Data/Output/translations"
-judgments_folder = "./Data/Output/judgements"
-consistency_judgments_folder = "./Data/Output/consistency_judgements"
+judgments_folder = "./Data/Output/judgments"
+consistency_judgments_folder = "./Data/Output/consistency_judgments"
 output_battles_file_path = "./Data/Output/prepared_files/compiled_battles.json"
 output_totals_file_path = "./Data/Output/prepared_files/battle_totals.json"
 
